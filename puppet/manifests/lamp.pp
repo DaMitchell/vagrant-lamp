@@ -1,0 +1,3 @@
+
+#Install apache
+class {'apache':  }
