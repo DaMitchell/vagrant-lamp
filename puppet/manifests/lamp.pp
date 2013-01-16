@@ -1,3 +1,6 @@
 
 #Install apache
-class {'apache':  }
+class {'apache': }
+
+#Install the php apache mod
+class {'apache::mod::php': }
