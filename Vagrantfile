@@ -5,8 +5,8 @@ Vagrant::Config.run do |config|
 
     config.vm.define :lamp do |lamp_config|
 	
-        lamp_config.vm.box = "precise32"
-		lamp_config.vm.box_url = "http://files.vagrantup.com/precise32.box"
+        lamp_config.vm.box = "precise64"
+		lamp_config.vm.box_url = "http://files.vagrantup.com/precise64.box"
 		
         lamp_config.ssh.max_tries = 10
 		
