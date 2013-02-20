@@ -23,7 +23,6 @@ Vagrant::Config.run do |config|
 				"docroot" => '/vagrant/public/'
 			}
             puppet.manifests_path = "puppet/manifests"
-            puppet.manifest_file  = "lamp.pp"
             puppet.module_path = "puppet/modules"
             #puppet.options = "--verbose --debug"
             #puppet.options = "--verbose"
