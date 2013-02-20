@@ -49,6 +49,8 @@ class setup-apache
 class setup-php
 {
 	include php
+	
+	class {'apache::mod::php': }
 }
 
 class development 
@@ -61,19 +63,6 @@ class development
 	}
 }
 
-#Install apache
-#class {"apache": }
-
-#Install the php apache mod
-#class {"apache::mod::php": }
-
-#file{"/etc/apache2/sites-enabled/default":
-#	ensure  => present,
-#    source  => "/vagrant/puppet/templates/vhost",
-#    require => Package["apache2"],
-#	notify  => Service["apache2"]
-#}
-
 class { 'apt':
   always_apt_update    => true
 }
@@ -84,3 +73,4 @@ include system-update
 include development
 
 include setup-apache
+include setup-php
