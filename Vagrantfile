@@ -17,6 +17,11 @@ Vagrant::Config.run do |config|
         lamp_config.vm.host_name = "lamp"
 
         lamp_config.vm.provision :puppet do |puppet|
+			puppet.facter = { 
+				"fqdn" => "test.lamp", 
+				"hostname" => "www", 
+				"docroot" => '/vagrant/public/'
+			}
             puppet.manifests_path = "puppet/manifests"
             puppet.manifest_file  = "lamp.pp"
             puppet.module_path = "puppet/modules"

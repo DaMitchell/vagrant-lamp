@@ -32,6 +32,25 @@ class system-update
 	}			
 }
 
+class setup-apache
+{
+	include apache
+	
+	a2mod { 'rewrite': ensure => present; }
+	
+	apache::vhost { $fqdn :
+		priority => '20',
+		port => '80',
+		docroot => $docroot,
+		configure_firewall => false,
+	}
+}
+
+class setup-php
+{
+	include php
+}
+
 class development 
 {
 	$devPackages = [ "curl", "git" ]
@@ -55,9 +74,6 @@ class development
 #	notify  => Service["apache2"]
 #}
 
-#Include php
-#include php
-
 class { 'apt':
   always_apt_update    => true
 }
@@ -65,3 +81,6 @@ class { 'apt':
 Exec["apt-get update"] -> Package <| |>
 
 include system-update
+include development
+
+include setup-apache
