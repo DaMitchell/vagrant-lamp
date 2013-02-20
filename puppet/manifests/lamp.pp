@@ -42,8 +42,6 @@ class development
 	}
 }
 
-
-
 #Install apache
 #class {"apache": }
 
@@ -58,5 +56,12 @@ class development
 #}
 
 #Include php
-include php
+#include php
 
+class { 'apt':
+  always_apt_update    => true
+}
+
+Exec["apt-get update"] -> Package <| |>
+
+include system-update
