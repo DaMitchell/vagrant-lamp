@@ -48,9 +48,39 @@ class setup-apache
 
 class setup-php
 {
-	include php
+	#include php
 	
+	class { 'php': 
+		module_prefix => 'php-'
+	}
+			
 	class {'apache::mod::php': }
+		
+	$extensions = ['xdebug', 'mysql', 'curl', 'gd']
+	
+	php::module { $extensions : 
+		notify => Service['httpd'],
+		module_prefix => 'php5-'
+	}
+	
+	php::module { 'pear':
+		module_prefix => 'php-'
+	}
+
+	exec { 'pecl-mongo-install':
+        command => 'pecl install mongo',
+        unless => 'pecl info mongo',
+        notify => Service['httpd'],
+        require => Package['php-pear'],
+    }
+	
+	file { '/etc/php5/conf.d/mongo.ini':
+        owner  => root,
+        group  => root,
+        mode   => 664,
+        source => '/vagrant/puppet/conf/mongo.ini',
+        notify => Service['httpd'],
+    }
 }
 
 class development 
