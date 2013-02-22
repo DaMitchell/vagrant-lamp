@@ -83,6 +83,12 @@ class setup-php
     }
 }
 
+class setup-mongodb
+{
+	class { 'mongodb': }
+}
+
+
 class development 
 {
 	$devPackages = [ "curl", "git" ]
@@ -104,3 +110,4 @@ include development
 
 include setup-apache
 include setup-php
+include setup-mongodb
