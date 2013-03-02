@@ -100,7 +100,7 @@ class development
 }
 
 class { 'apt':
-  always_apt_update    => true
+  always_apt_update => true
 }
 
 Exec["apt-get update"] -> Package <| |>
