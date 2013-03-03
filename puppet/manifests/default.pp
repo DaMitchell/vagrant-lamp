@@ -94,6 +94,14 @@ class setup-mongodb
 	}	
 }
 
+class setup-mysql
+{
+	class { 'mysql': 
+		root_password => 'password',
+		port => 3306
+	}
+}
+
 class development 
 {
 	$devPackages = [ "curl", "git" ]
@@ -116,3 +124,4 @@ include development
 include setup-apache
 include setup-php
 include setup-mongodb
+include setup-mysql
