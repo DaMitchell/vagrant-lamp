@@ -13,6 +13,8 @@ Vagrant::Config.run do |config|
         lamp_config.vm.forward_port 22, 2222
         lamp_config.vm.forward_port 80, 8080
         lamp_config.vm.forward_port 3306, 8989
+		lamp_config.vm.forward_port 27017, 27017
+		lamp_config.vm.forward_port 28017, 28017
 		
         lamp_config.vm.host_name = "lamp"
 

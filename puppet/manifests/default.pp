@@ -85,7 +85,9 @@ class setup-php
 
 class setup-mongodb
 {
-	class { 'mongodb': }
+	class { 'mongodb': 
+		
+	}
 }
 
 
