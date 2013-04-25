@@ -20,7 +20,7 @@ Vagrant::Config.run do |config|
 
         lamp_config.vm.provision :puppet do |puppet|
 			puppet.facter = { 
-				"fqdn" => "test.lamp", 
+				"fqdn" => "lamp",
 				"hostname" => "www", 
 				"docroot" => '/vagrant/public/'
 			}
