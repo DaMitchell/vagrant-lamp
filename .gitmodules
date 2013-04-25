@@ -25,3 +25,6 @@
 [submodule "puppet/modules/phpqatools"]
 	path = puppet/modules/phpqatools
 	url = git://github.com/rafaelfelix/puppet-phpqatools.git
+[submodule "puppet"]
+	path = puppet
+	url = git://github.com/DaMitchell/vagrant-puppet.git
